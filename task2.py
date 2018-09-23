@@ -1,14 +1,17 @@
-import heapq 
+import heapq
+import random
+import math
 
-def main(arr_time, orbit_time, service_time, max_buffer_size, MCL_stop):
+def getExp(mean, random_number):
+	return round(-mean * math.log(1 - random_number),4)
+
+def main(mean_arr_time, mean_orbit_time, service_time, max_buffer_size, MCL_stop):
 	MCL = 0
 	CLA = 2
 	buffer_num = 0
 	CLS = 0
 	CLR = [] #using min heap
-	#dic = {}
-	# d = {"CLR":8, "CLS":8, "CLA":8}
-	# print(min(d, key=d.get))
+
 	while MCL <= MCL_stop:
 		dic = {}
 		#decide event
@@ -48,7 +51,10 @@ def main(arr_time, orbit_time, service_time, max_buffer_size, MCL_stop):
 				buffer_num += 1
 				CLS = item + service_time
 			elif buffer_num == max_buffer_size:
-				heapq.heappush(CLR, item + orbit_time)
+				random_number = random.random()
+				orbit_time = getExp(mean_orbit_time, random_number)
+				heapq.heappush(CLR, round(item + orbit_time, 4))
+				#print("orbit_time:", round(orbit_time, 4))
 			else:
 				buffer_num += 1
 
@@ -63,11 +69,16 @@ def main(arr_time, orbit_time, service_time, max_buffer_size, MCL_stop):
 				buffer_num += 1
 				CLS = CLA + service_time
 			elif buffer_num == max_buffer_size:
-				heapq.heappush(CLR, CLA + orbit_time)
+				random_number = random.random()
+				orbit_time = getExp(mean_orbit_time, random_number)
+				heapq.heappush(CLR, round(CLA + orbit_time, 4))
+				#print("orbit_time:", round(orbit_time, 4))
 			else:
 				buffer_num += 1
-
+			random_number = random.random()
+			arr_time = getExp(mean_arr_time, random_number)
 			CLA += arr_time
+			#print("arr_time:", round(arr_time, 4))
 
 
 
@@ -84,7 +95,7 @@ def main(arr_time, orbit_time, service_time, max_buffer_size, MCL_stop):
 
 
 		#output
-		print(MCL,"  ",CLA,"  ",buffer_num,"   ",CLS,"   ",CLR)
+		print(round(MCL, 4),"  ",round(CLA,4),"  ",buffer_num,"   ",CLS,"   ",CLR)
 
 
 
@@ -96,10 +107,11 @@ if __name__== "__main__":
 	# - service time,
 	# - buffer size, and
 	# - value of the master clock at which time the simulation will be terminated.
-	arr_time = 6
-	orbit_time = 5
+	mean_arr_time = 6
+	mean_orbit_time = 5
 	service_time = 10
 	max_buffer_size = 2
 	MCL_stop = 200
+	random.seed(2)
 	print("MCL, CLA, buffer, CLS, CLR")
-	main(arr_time, orbit_time, service_time, max_buffer_size, MCL_stop)
+	main(mean_arr_time, mean_orbit_time, service_time, max_buffer_size, MCL_stop)
