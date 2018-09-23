@@ -1,9 +1,10 @@
 import heapq
 import random
 import math
+import sys
 
 def getExp(mean, random_number):
-	return round(-mean * math.log(1 - random_number),4)
+	return round(-mean * math.log(1 - random_number), 4)
 
 def main(mean_arr_time, mean_orbit_time, service_time, max_buffer_size, MCL_stop):
 	MCL = 0
@@ -107,11 +108,21 @@ if __name__== "__main__":
 	# - service time,
 	# - buffer size, and
 	# - value of the master clock at which time the simulation will be terminated.
-	mean_arr_time = 6
-	mean_orbit_time = 5
-	service_time = 10
-	max_buffer_size = 2
-	MCL_stop = 200
+
+	#default value
+	# mean_arr_time = 6
+	# mean_orbit_time = 5
+	# service_time = 10
+	# max_buffer_size = 2
+	# MCL_stop = 200
+
+	#input from terminal
+	mean_arr_time = int(sys.argv[1])
+	mean_orbit_time = int(sys.argv[2])
+	service_time = int(sys.argv[3])
+	max_buffer_size = int(sys.argv[4])
+	MCL_stop = int(sys.argv[5])
+
 	random.seed(2)
 	print("MCL, CLA, buffer, CLS, CLR")
 	main(mean_arr_time, mean_orbit_time, service_time, max_buffer_size, MCL_stop)

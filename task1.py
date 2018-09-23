@@ -1,4 +1,5 @@
-import heapq 
+import heapq
+import sys
 
 def main(arr_time, orbit_time, service_time, max_buffer_size, MCL_stop):
 	MCL = 0
@@ -6,9 +7,7 @@ def main(arr_time, orbit_time, service_time, max_buffer_size, MCL_stop):
 	buffer_num = 0
 	CLS = 0
 	CLR = [] #using min heap
-	#dic = {}
-	# d = {"CLR":8, "CLS":8, "CLA":8}
-	# print(min(d, key=d.get))
+
 	while MCL <= MCL_stop:
 		dic = {}
 		#decide event
@@ -96,10 +95,20 @@ if __name__== "__main__":
 	# - service time,
 	# - buffer size, and
 	# - value of the master clock at which time the simulation will be terminated.
-	arr_time = 6
-	orbit_time = 5
-	service_time = 10
-	max_buffer_size = 2
-	MCL_stop = 200
+	
+	#default value
+	# arr_time = 6
+	# orbit_time = 5
+	# service_time = 10
+	# max_buffer_size = 2
+	# MCL_stop = 200
+
+	#take input from terminal
+	arr_time = int(sys.argv[1])
+	orbit_time = int(sys.argv[2])
+	service_time = int(sys.argv[3])
+	max_buffer_size = int(sys.argv[4])
+	MCL_stop = int(sys.argv[5])
+
 	print("MCL, CLA, buffer, CLS, CLR")
 	main(arr_time, orbit_time, service_time, max_buffer_size, MCL_stop)
