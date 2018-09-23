@@ -90,8 +90,8 @@ def main(arr_time, orbit_time, service_time, max_buffer_size, MCL_stop):
 
 if __name__== "__main__":
 	# The input values are
-	# - the mean inter-arrival time,
-	# - mean orbiting time,
+	# - inter-arrival time,
+	# - orbiting time,
 	# - service time,
 	# - buffer size, and
 	# - value of the master clock at which time the simulation will be terminated.
