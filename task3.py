@@ -6,7 +6,7 @@ import sys
 def getExp(mean, random_number):
 	return round(-mean * math.log(1 - random_number), 4)
 
-def main(mean_arr_time, mean_orbit_time, service_time, max_buffer_size, MCL_stop, array):
+def getArray(mean_arr_time, mean_orbit_time, service_time, max_buffer_size, MCL_stop, array):
 	MCL = 0
 	CLA = 2
 	buffer_num = 0
@@ -145,11 +145,47 @@ def main(mean_arr_time, mean_orbit_time, service_time, max_buffer_size, MCL_stop
 
 
 		#output
-		print(round(MCL, 4),"  ",round(CLA, 4),"  ",buffer_num, buffer_idx,"   ",CLS,"       ",CLR[:8])
+		#print(round(MCL, 4),"  ",round(CLA, 4),"  ",buffer_num, buffer_idx,"   ",CLS,"       ",CLR[:8])
 
+	# for item in array:
+	# 	print(item)
+	# print(len(array))
+	# print(array[-1])
+	return array
+
+def calT(array):
+	T = []
 	for item in array:
-		print(item)
+		T.append(round(item[4] - item[1], 4))
+	
+	#take only the 1000th to 51000th
+	T = T[1000:51001]
+	#print("total T_mean:", round(sum(T) / len(T), 4))
 
+	batch_mean_list = []
+	for i in range(50):
+		batch = T[i * 1000 : i * 1000 + 1000]
+		batch_mean = round(sum(batch) / len(batch), 4)
+		batch_mean_list.append(batch_mean)
+		#print("batch_mean:", batch_mean)
+	print("T_batch_mean_list_mean:", round(sum(batch_mean_list) / len(batch_mean_list), 4))
+
+def calD(array):
+	D = []
+	for item in array:
+		D.append(round(item[3] - item[2], 4))
+	
+	#take only the 1000th to 51000th
+	D = D[1000:51001]
+	#print("total D_mean:", round(sum(D) / len(D), 4))
+
+	batch_mean_list = []
+	for i in range(50):
+		batch = D[i * 1000 : i * 1000 + 1001]
+		batch_mean = round(sum(batch) / len(batch), 4)
+		batch_mean_list.append(batch_mean)
+		#print("batch_mean:", batch_mean)
+	print("D_batch_mean_list_mean:", round(sum(batch_mean_list) / len(batch_mean_list), 4))
 
 if __name__== "__main__":
 	# The input values are
@@ -162,10 +198,10 @@ if __name__== "__main__":
 	#default value
 	mean_arr_time = 6
 	mean_orbit_time = 5
-	service_time = 3
-	max_buffer_size = 2
-	MCL_stop = 200
-	array = []#idx, each request of arrive time, when the begin retransmission, when to get into queue(get service), when finish
+	service_time = [1, 2, 3, 4, 5, 6]#1~6
+	max_buffer_size = 5
+	MCL_stop = 500000
+
 
 	#input from terminal
 	# mean_arr_time = int(sys.argv[1])
@@ -175,5 +211,13 @@ if __name__== "__main__":
 	# MCL_stop = int(sys.argv[5])
 
 	random.seed(2)
-	print("MCL,    CLA,       buffer,    CLS,             CLR")
-	main(mean_arr_time, mean_orbit_time, service_time, max_buffer_size, MCL_stop, array)
+	#print("MCL,    CLA,       buffer,    CLS,             CLR")
+
+	for s_time in service_time:
+		array = []#idx, each request of arrive time, when the begin retransmission, when to get into queue(get service), when finish
+		print("service_time:", s_time)
+		array = getArray(mean_arr_time, mean_orbit_time, s_time, max_buffer_size, MCL_stop, array)
+	
+		calT(array)
+
+		calD(array)

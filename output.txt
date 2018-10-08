@@ -1,0 +1,19 @@
+service_time: 1
+T_batch_mean_list_mean: 1.0991
+D_batch_mean_list_mean: 0.0
+service_time: 2
+T_batch_mean_list_mean: 2.5025
+D_batch_mean_list_mean: 0.0021
+service_time: 3
+T_batch_mean_list_mean: 4.4761
+D_batch_mean_list_mean: 0.0218
+service_time: 4
+T_batch_mean_list_mean: 7.9422
+D_batch_mean_list_mean: 0.2698
+service_time: 5
+T_batch_mean_list_mean: 17.0058
+D_batch_mean_list_mean: 3.1411
+service_time: 6
+T_batch_mean_list_mean: 299.0659
+D_batch_mean_list_mean: 270.312
+[Finished in 64.3s]
