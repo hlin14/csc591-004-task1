@@ -1,19 +1,91 @@
 service_time: 1
 T_batch_mean_list_mean: 1.0991
+T_batch_mean_list_sd: 0.0098
+T_batch_mean_list_CI: [ 1.0987 1.0995 ]
+T_batch_per_list_mean 1.7846
+T_batch_per_list_sd 0.044
+T_batch_per_list_CI: [ 1.7829 1.7863 ]
+--
 D_batch_mean_list_mean: 0.0
+D_batch_mean_list_sd: 0.0
+D_batch_mean_list_CI: [ 0.0 0.0 ]
+D_batch_per_list_mean 0.0
+D_batch_per_list_sd 0.0
+D_batch_per_list_CI: [ 0.0 0.0 ]
+=======
 service_time: 2
 T_batch_mean_list_mean: 2.5025
+T_batch_mean_list_sd: 0.0646
+T_batch_mean_list_CI: [ 2.5 2.505 ]
+T_batch_per_list_mean 4.489
+T_batch_per_list_sd 0.3086
+T_batch_per_list_CI: [ 4.4769 4.5011 ]
+--
 D_batch_mean_list_mean: 0.0021
+D_batch_mean_list_sd: 0.0062
+D_batch_mean_list_CI: [ 0.0019 0.0023 ]
+D_batch_per_list_mean 0.0
+D_batch_per_list_sd 0.0
+D_batch_per_list_CI: [ 0.0 0.0 ]
+=======
 service_time: 3
 T_batch_mean_list_mean: 4.4761
+T_batch_mean_list_sd: 0.1441
+T_batch_mean_list_CI: [ 4.4705 4.4817 ]
+T_batch_per_list_mean 9.0447
+T_batch_per_list_sd 0.5883
+T_batch_per_list_CI: [ 9.0216 9.0678 ]
+--
 D_batch_mean_list_mean: 0.0218
+D_batch_mean_list_sd: 0.0288
+D_batch_mean_list_CI: [ 0.0207 0.0229 ]
+D_batch_per_list_mean 0.0
+D_batch_per_list_sd 0.0
+D_batch_per_list_CI: [ 0.0 0.0 ]
+=======
 service_time: 4
 T_batch_mean_list_mean: 7.9422
+T_batch_mean_list_sd: 0.4803
+T_batch_mean_list_CI: [ 7.9234 7.960999999999999 ]
+T_batch_per_list_mean 17.6618
+T_batch_per_list_sd 1.4919
+T_batch_per_list_CI: [ 17.6033 17.720299999999998 ]
+--
 D_batch_mean_list_mean: 0.2698
+D_batch_mean_list_sd: 0.2073
+D_batch_mean_list_CI: [ 0.2617 0.2779 ]
+D_batch_per_list_mean 0.0752
+D_batch_per_list_sd 0.4233
+D_batch_per_list_CI: [ 0.0586 0.0918 ]
+=======
 service_time: 5
 T_batch_mean_list_mean: 17.0058
+T_batch_mean_list_sd: 3.6455
+T_batch_mean_list_CI: [ 16.8629 17.1487 ]
+T_batch_per_list_mean 43.5826
+T_batch_per_list_sd 15.0315
+T_batch_per_list_CI: [ 42.9934 44.1718 ]
+--
 D_batch_mean_list_mean: 3.1411
+D_batch_mean_list_sd: 2.5308
+D_batch_mean_list_CI: [ 3.0419 3.2403 ]
+D_batch_per_list_mean 19.791
+D_batch_per_list_sd 14.5068
+D_batch_per_list_CI: [ 19.2223 20.3597 ]
+=======
 service_time: 6
 T_batch_mean_list_mean: 299.0659
+T_batch_mean_list_sd: 263.3994
+T_batch_mean_list_CI: [ 288.7406 309.3912 ]
+T_batch_per_list_mean 888.0689
+T_batch_per_list_sd 768.8368
+T_batch_per_list_CI: [ 857.9305 918.2073 ]
+--
 D_batch_mean_list_mean: 270.312
-[Finished in 64.3s]
+D_batch_mean_list_sd: 262.1938
+D_batch_mean_list_CI: [ 260.034 280.59000000000003 ]
+D_batch_per_list_mean 851.8324
+D_batch_per_list_sd 763.7663
+D_batch_per_list_CI: [ 821.8928 881.772 ]
+=======
+[Finished in 72.6s]

@@ -163,12 +163,38 @@ def calT(array):
 	#print("total T_mean:", round(sum(T) / len(T), 4))
 
 	batch_mean_list = []
+	batch_per_lsit = []
 	for i in range(50):
 		batch = T[i * 1000 : i * 1000 + 1000]
 		batch_mean = round(sum(batch) / len(batch), 4)
 		batch_mean_list.append(batch_mean)
+
+		batch.sort()
+		batch_per_lsit.append(batch[int(len(batch)*0.95)])
 		#print("batch_mean:", batch_mean)
-	print("T_batch_mean_list_mean:", round(sum(batch_mean_list) / len(batch_mean_list), 4))
+	batch_mean_list_mean = round(sum(batch_mean_list) / len(batch_mean_list), 4)
+	batch_per_lsit_mean = round(sum(batch_per_lsit) / len(batch_per_lsit), 4)
+
+	temp = 0
+	for item in batch_mean_list:
+		temp += (item - batch_mean_list_mean) ** 2
+	batch_mean_list_sd = round((temp / (len(batch_mean_list) - 1)) ** 0.5, 4)
+
+	temp = 0
+	for item in batch_per_lsit:
+		temp += (item - batch_per_lsit_mean) ** 2
+	batch_per_lsit_sd = round((temp / (len(batch_mean_list) - 1)) ** 0.5, 4)
+
+	print("T_batch_mean_list_mean:", batch_mean_list_mean)
+	print("T_batch_mean_list_sd:", batch_mean_list_sd)
+	print("T_batch_mean_list_CI:", "[", round(batch_mean_list_mean - round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), 4),
+		batch_mean_list_mean + round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), "]")
+
+	print("T_batch_per_list_mean", batch_per_lsit_mean)
+	print("T_batch_per_list_sd", batch_per_lsit_sd)
+	print("T_batch_per_list_CI:", "[", round(batch_per_lsit_mean - round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), 4),
+		batch_per_lsit_mean + round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), "]")
+	print("--")
 
 def calD(array):
 	D = []
@@ -180,12 +206,38 @@ def calD(array):
 	#print("total D_mean:", round(sum(D) / len(D), 4))
 
 	batch_mean_list = []
+	batch_per_lsit = []
 	for i in range(50):
 		batch = D[i * 1000 : i * 1000 + 1001]
 		batch_mean = round(sum(batch) / len(batch), 4)
 		batch_mean_list.append(batch_mean)
+
+		batch.sort()
+		batch_per_lsit.append(batch[int(len(batch)*0.95)])
+
 		#print("batch_mean:", batch_mean)
-	print("D_batch_mean_list_mean:", round(sum(batch_mean_list) / len(batch_mean_list), 4))
+	batch_mean_list_mean = round(sum(batch_mean_list) / len(batch_mean_list), 4)
+	batch_per_lsit_mean = round(sum(batch_per_lsit) / len(batch_per_lsit), 4)
+
+	temp = 0
+	for item in batch_mean_list:
+		temp += (item - batch_mean_list_mean) ** 2
+	batch_mean_list_sd = round((temp / (len(batch_mean_list) - 1)) ** 0.5, 4)
+
+	temp = 0
+	for item in batch_per_lsit:
+		temp += (item - batch_per_lsit_mean) ** 2
+	batch_per_lsit_sd = round((temp / (len(batch_mean_list) - 1)) ** 0.5, 4)
+
+	print("D_batch_mean_list_mean:", batch_mean_list_mean)
+	print("D_batch_mean_list_sd:", batch_mean_list_sd)
+	print("D_batch_mean_list_CI:", "[", round(batch_mean_list_mean - round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), 4),
+		batch_mean_list_mean + round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), "]")
+
+	print("D_batch_per_list_mean", batch_per_lsit_mean)
+	print("D_batch_per_list_sd", batch_per_lsit_sd)
+	print("D_batch_per_list_CI:", "[", round(batch_per_lsit_mean - round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), 4),
+		batch_per_lsit_mean + round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), "]")
 
 if __name__== "__main__":
 	# The input values are
@@ -221,3 +273,4 @@ if __name__== "__main__":
 		calT(array)
 
 		calD(array)
+		print("=======")
