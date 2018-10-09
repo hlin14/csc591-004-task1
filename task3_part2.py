@@ -2,7 +2,7 @@ import heapq
 import random
 import math
 import sys
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 def getExp(mean, random_number):
 	return round(-mean * math.log(1 - random_number), 4)
@@ -265,9 +265,9 @@ if __name__== "__main__":
 	#default value
 	mean_arr_time = 6
 	mean_orbit_time = 5
-	service_time = [1,2,3,4,5,6]#1~6
-	max_buffer_size = 5
-	MCL_stop = 500000
+	service_time = 5#1~6
+	max_buffer_size = [i for i in range(1, 11)]
+	MCL_stop = 700000
 
 
 	#input from terminal
@@ -293,10 +293,10 @@ if __name__== "__main__":
 	D_per_CI = []
 
 
-	for s_time in service_time:
+	for buffer_size in max_buffer_size:
 		array = []#idx, each request of arrive time, when the begin retransmission, when to get into queue(get service), when finish
-		print("service_time:", s_time)
-		array = getArray(mean_arr_time, mean_orbit_time, s_time, max_buffer_size, MCL_stop, array)
+		print("buffer_size:", buffer_size)
+		array = getArray(mean_arr_time, mean_orbit_time, service_time, buffer_size, MCL_stop, array)
 	
 		batch_mean_list_mean, batch_mean_list_sd, [CI1_mean, CI2_mean], batch_per_lsit_mean, batch_per_lsit_sd, [CI1_per, CI2_per] = calT(array)#return batch_mean_list_mean, batch_mean_list_sd, [CI1_mean, CI2_mean], batch_per_lsit_mean, batch_per_lsit_sd, [CI1_per, CI2_per]
 		
@@ -317,28 +317,20 @@ if __name__== "__main__":
 
 
 
-	#start drawing part 1
-	# x = [x for x in range(1, len(service_time) + 1)]
-	# e_T_mean =[y - x for x, y in T_CI]
-	# e_T_per = [y - x for x, y in T_per_CI]
+	#start drawing part 2
+	x = [x for x in range(1, len(max_buffer_size) + 1)]
 
-	# e_D_mean =[y - x for x, y in D_CI]
-	# e_D_per = [y - x for x, y in D_per_CI]
 
-	# plt.plot(x, T_mean, color='orange', linewidth = 0.5)
-	# plt.plot(x, D_mean, color='green', linewidth = 0.5)
-	# plt.errorbar(x, T_mean, e_T_mean, linestyle = 'None',fmt = '--o', capthick = 2.2, elinewidth = 1.2, color='red', markersize = 1)
-	# plt.errorbar(x, D_mean, e_D_mean, linestyle = 'None',fmt = '--o', capthick = 2, elinewidth = 1, color='c', markersize = 1)
-	# plt.legend(('T_mean', 'D_mean'), loc='upper left')
-	# plt.xlabel('service_time')
-	# plt.ylabel('mean')
-	# plt.show()
+	plt.plot(x, T_mean, color='orange', linewidth = 1)
+	plt.plot(x, D_mean, color='green', linewidth = 1)
+	plt.legend(('T_mean', 'D_mean'), loc='upper left')
+	plt.xlabel('max_buffer_size')
+	plt.ylabel('mean')
+	plt.show()
 
-	# plt.plot(x, T_per_mean, color='orange', linewidth = 0.5)
-	# plt.plot(x, D_per_mean, color='green', linewidth = 0.5)
-	# plt.errorbar(x, T_per_mean, e_T_per, linestyle = 'None',fmt = '--o', capthick = 2.2, elinewidth = 1.2, color='red',markersize = 1)
-	# plt.errorbar(x, D_per_mean, e_D_per, linestyle = 'None',fmt = '--o', capthick = 2, elinewidth = 1, color='c',markersize = 1)
-	# plt.legend(('T_per_mean', 'D_per_mean'), loc='upper left')
-	# plt.xlabel('service_time')
-	# plt.ylabel('0.95 percentile mean')
-	# plt.show()
+	plt.plot(x, T_per_mean, color='orange', linewidth = 1)
+	plt.plot(x, D_per_mean, color='green', linewidth = 1)
+	plt.legend(('T_per_mean', 'D_per_mean'), loc='upper left')
+	plt.xlabel('max_buffer_size')
+	plt.ylabel('0.95 percentile mean')
+	plt.show()

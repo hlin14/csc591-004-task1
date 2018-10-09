@@ -1,3 +1,4 @@
+part1:
 service_time: 1
 T_batch_mean_list_mean: 1.0991
 T_batch_mean_list_sd: 0.0098
@@ -88,4 +89,155 @@ D_batch_per_list_mean 851.8324
 D_batch_per_list_sd 763.7663
 D_batch_per_list_CI: [ 821.8928 881.772 ]
 =======
-[Finished in 72.6s]
+
+part2:
+buffer_size: 1
+T_batch_mean_list_mean: 41.4203
+T_batch_mean_list_sd: 7.9745
+T_batch_mean_list_CI: [ 41.1077 41.7329 ]
+T_batch_per_list_mean 136.6168
+T_batch_per_list_sd 31.501
+T_batch_per_list_CI: [ 135.382 137.8516 ]
+--
+D_batch_mean_list_mean: 36.4144
+D_batch_mean_list_sd: 7.964
+D_batch_mean_list_CI: [ 36.1022 36.7266 ]
+D_batch_per_list_mean 130.5856
+D_batch_per_list_sd 31.3399
+D_batch_per_list_CI: [ 129.3571 131.8141 ]
+=======
+buffer_size: 2
+T_batch_mean_list_mean: 17.8922
+T_batch_mean_list_sd: 2.9695
+T_batch_mean_list_CI: [ 17.7758 18.0086 ]
+T_batch_per_list_mean 56.8169
+T_batch_per_list_sd 12.5413
+T_batch_per_list_CI: [ 56.3253 57.3085 ]
+--
+D_batch_mean_list_mean: 10.0413
+D_batch_mean_list_sd: 2.7964
+D_batch_mean_list_CI: [ 9.9317 10.1509 ]
+D_batch_per_list_mean 47.558
+D_batch_per_list_sd 12.1296
+D_batch_per_list_CI: [ 47.0825 48.0335 ]
+=======
+buffer_size: 3
+T_batch_mean_list_mean: 17.8246
+T_batch_mean_list_sd: 3.2739
+T_batch_mean_list_CI: [ 17.6963 17.9529 ]
+T_batch_per_list_mean 53.2769
+T_batch_per_list_sd 14.0712
+T_batch_per_list_CI: [ 52.7253 53.8285 ]
+--
+D_batch_mean_list_mean: 7.1814
+D_batch_mean_list_sd: 2.8533
+D_batch_mean_list_CI: [ 7.0696 7.2932 ]
+D_batch_per_list_mean 39.3399
+D_batch_per_list_sd 13.5434
+D_batch_per_list_CI: [ 38.809 39.8708 ]
+=======
+buffer_size: 4
+T_batch_mean_list_mean: 17.7013
+T_batch_mean_list_sd: 3.9949
+T_batch_mean_list_CI: [ 17.5447 17.8579 ]
+T_batch_per_list_mean 49.1601
+T_batch_per_list_sd 17.2079
+T_batch_per_list_CI: [ 48.4856 49.8346 ]
+--
+D_batch_mean_list_mean: 5.0731
+D_batch_mean_list_sd: 3.2526
+D_batch_mean_list_CI: [ 4.9456 5.2006 ]
+D_batch_per_list_mean 30.582
+D_batch_per_list_sd 16.4582
+D_batch_per_list_CI: [ 29.9368 31.2272 ]
+=======
+buffer_size: 5
+T_batch_mean_list_mean: 18.0212
+T_batch_mean_list_sd: 3.7652
+T_batch_mean_list_CI: [ 17.8736 18.1688 ]
+T_batch_per_list_mean 48.4754
+T_batch_per_list_sd 17.4648
+T_batch_per_list_CI: [ 47.7908 49.16 ]
+--
+D_batch_mean_list_mean: 3.8563
+D_batch_mean_list_sd: 2.7536
+D_batch_mean_list_CI: [ 3.7484 3.9642 ]
+D_batch_per_list_mean 24.8339
+D_batch_per_list_sd 16.3669
+D_batch_per_list_CI: [ 24.1923 25.4755 ]
+=======
+buffer_size: 6
+T_batch_mean_list_mean: 17.9918
+T_batch_mean_list_sd: 3.452
+T_batch_mean_list_CI: [ 17.8565 18.1271 ]
+T_batch_per_list_mean 45.0838
+T_batch_per_list_sd 13.3943
+T_batch_per_list_CI: [ 44.5587 45.6089 ]
+--
+D_batch_mean_list_mean: 2.6017
+D_batch_mean_list_sd: 1.9949
+D_batch_mean_list_CI: [ 2.5235 2.6799 ]
+D_batch_per_list_mean 16.2934
+D_batch_per_list_sd 13.1362
+D_batch_per_list_CI: [ 15.7785 16.8083 ]
+=======
+buffer_size: 7
+T_batch_mean_list_mean: 17.9241
+T_batch_mean_list_sd: 4.3574
+T_batch_mean_list_CI: [ 17.7533 18.0949 ]
+T_batch_per_list_mean 43.6448
+T_batch_per_list_sd 14.7797
+T_batch_per_list_CI: [ 43.0654 44.2242 ]
+--
+D_batch_mean_list_mean: 1.8235
+D_batch_mean_list_sd: 2.2195
+D_batch_mean_list_CI: [ 1.7365 1.9105 ]
+D_batch_per_list_mean 10.4848
+D_batch_per_list_sd 13.818
+D_batch_per_list_CI: [ 9.9431 11.0265 ]
+=======
+buffer_size: 8
+T_batch_mean_list_mean: 16.9501
+T_batch_mean_list_sd: 2.7667
+T_batch_mean_list_CI: [ 16.8416 17.0586 ]
+T_batch_per_list_mean 40.7737
+T_batch_per_list_sd 8.69
+T_batch_per_list_CI: [ 40.4331 41.1143 ]
+--
+D_batch_mean_list_mean: 0.9147
+D_batch_mean_list_sd: 0.9668
+D_batch_mean_list_CI: [ 0.8768 0.9526 ]
+D_batch_per_list_mean 3.6758
+D_batch_per_list_sd 7.2415
+D_batch_per_list_CI: [ 3.3919 3.9597 ]
+=======
+buffer_size: 9
+T_batch_mean_list_mean: 17.8267
+T_batch_mean_list_sd: 4.2323
+T_batch_mean_list_CI: [ 17.6608 17.9926 ]
+T_batch_per_list_mean 44.5046
+T_batch_per_list_sd 12.7018
+T_batch_per_list_CI: [ 44.0067 45.0025 ]
+--
+D_batch_mean_list_mean: 0.9541
+D_batch_mean_list_sd: 1.5906
+D_batch_mean_list_CI: [ 0.8917 1.0165 ]
+D_batch_per_list_mean 4.461
+D_batch_per_list_sd 9.7494
+D_batch_per_list_CI: [ 4.0788 4.8432 ]
+=======
+buffer_size: 10
+T_batch_mean_list_mean: 17.9451
+T_batch_mean_list_sd: 3.8788
+T_batch_mean_list_CI: [ 17.7931 18.0971 ]
+T_batch_per_list_mean 46.3983
+T_batch_per_list_sd 14.4164
+T_batch_per_list_CI: [ 45.8332 46.9634 ]
+--
+D_batch_mean_list_mean: 0.8974
+D_batch_mean_list_sd: 1.5911
+D_batch_mean_list_CI: [ 0.835 0.9598 ]
+D_batch_per_list_mean 3.6337
+D_batch_per_list_sd 10.3937
+D_batch_per_list_CI: [ 3.2263 4.0411 ]
+=======
