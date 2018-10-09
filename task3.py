@@ -2,6 +2,7 @@ import heapq
 import random
 import math
 import sys
+import matplotlib.pyplot as plt
 
 def getExp(mean, random_number):
 	return round(-mean * math.log(1 - random_number), 4)
@@ -185,16 +186,23 @@ def calT(array):
 		temp += (item - batch_per_lsit_mean) ** 2
 	batch_per_lsit_sd = round((temp / (len(batch_mean_list) - 1)) ** 0.5, 4)
 
+	CI1_mean = round(batch_mean_list_mean - round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), 4)
+	CI2_mean = round(batch_mean_list_mean + round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), 4)
+
+	CI1_per = round(batch_per_lsit_mean - round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), 4)
+	CI2_per = round(batch_per_lsit_mean + round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), 4)
+
+
 	print("T_batch_mean_list_mean:", batch_mean_list_mean)
 	print("T_batch_mean_list_sd:", batch_mean_list_sd)
-	print("T_batch_mean_list_CI:", "[", round(batch_mean_list_mean - round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), 4),
-		batch_mean_list_mean + round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), "]")
+	print("T_batch_mean_list_CI:", "[",CI1_mean, CI2_mean, "]")
 
 	print("T_batch_per_list_mean", batch_per_lsit_mean)
 	print("T_batch_per_list_sd", batch_per_lsit_sd)
-	print("T_batch_per_list_CI:", "[", round(batch_per_lsit_mean - round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), 4),
-		batch_per_lsit_mean + round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), "]")
+	print("T_batch_per_list_CI:", "[", CI1_per, CI2_per, "]")
 	print("--")
+
+	return batch_mean_list_mean, batch_mean_list_sd, [CI1_mean, CI2_mean], batch_per_lsit_mean, batch_per_lsit_sd, [CI1_per, CI2_per]
 
 def calD(array):
 	D = []
@@ -229,15 +237,22 @@ def calD(array):
 		temp += (item - batch_per_lsit_mean) ** 2
 	batch_per_lsit_sd = round((temp / (len(batch_mean_list) - 1)) ** 0.5, 4)
 
+	CI1_mean = round(batch_mean_list_mean - round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), 4)
+	CI2_mean = round(batch_mean_list_mean + round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), 4)
+
+	CI1_per = round(batch_per_lsit_mean - round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), 4)
+	CI2_per = round(batch_per_lsit_mean + round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), 4)
+
+
 	print("D_batch_mean_list_mean:", batch_mean_list_mean)
 	print("D_batch_mean_list_sd:", batch_mean_list_sd)
-	print("D_batch_mean_list_CI:", "[", round(batch_mean_list_mean - round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), 4),
-		batch_mean_list_mean + round(1.96 * batch_mean_list_sd / len(batch_mean_list), 4), "]")
+	print("D_batch_mean_list_CI:", "[", CI1_mean, CI2_mean, "]")
 
 	print("D_batch_per_list_mean", batch_per_lsit_mean)
 	print("D_batch_per_list_sd", batch_per_lsit_sd)
-	print("D_batch_per_list_CI:", "[", round(batch_per_lsit_mean - round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), 4),
-		batch_per_lsit_mean + round(1.96 * batch_per_lsit_sd / len(batch_per_lsit), 4), "]")
+	print("D_batch_per_list_CI:", "[", CI1_per, CI2_per, "]")
+
+	return batch_mean_list_mean, batch_mean_list_sd, [CI1_mean, CI2_mean], batch_per_lsit_mean, batch_per_lsit_sd, [CI1_per, CI2_per]
 
 if __name__== "__main__":
 	# The input values are
@@ -250,7 +265,7 @@ if __name__== "__main__":
 	#default value
 	mean_arr_time = 6
 	mean_orbit_time = 5
-	service_time = [1, 2, 3, 4, 5, 6]#1~6
+	service_time = [1,2,3,4]#1~6
 	max_buffer_size = 5
 	MCL_stop = 500000
 
@@ -265,12 +280,47 @@ if __name__== "__main__":
 	random.seed(2)
 	#print("MCL,    CLA,       buffer,    CLS,             CLR")
 
+	T_mean = []
+	T_CI = []
+
+	T_per_mean = []
+	T_per_CI = []
+
+	D_mean = []
+	D_CI = []
+
+	D_per_mean = []
+	D_per_CI = []
+
+
 	for s_time in service_time:
 		array = []#idx, each request of arrive time, when the begin retransmission, when to get into queue(get service), when finish
 		print("service_time:", s_time)
 		array = getArray(mean_arr_time, mean_orbit_time, s_time, max_buffer_size, MCL_stop, array)
 	
-		calT(array)
+		batch_mean_list_mean, batch_mean_list_sd, [CI1_mean, CI2_mean], batch_per_lsit_mean, batch_per_lsit_sd, [CI1_per, CI2_per] = calT(array)#return batch_mean_list_mean, batch_mean_list_sd, [CI1_mean, CI2_mean], batch_per_lsit_mean, batch_per_lsit_sd, [CI1_per, CI2_per]
+		
+		T_mean.append(batch_mean_list_mean)
+		T_CI.append([CI1_mean, CI2_mean])
 
-		calD(array)
+		T_per_mean.append(batch_per_lsit_mean)
+		T_per_CI.append([CI1_per, CI2_per])
+		
+
+		batch_mean_list_mean, batch_mean_list_sd, [CI1_mean, CI2_mean], batch_per_lsit_mean, batch_per_lsit_sd, [CI1_per, CI2_per] = calD(array)
+		D_mean.append(batch_mean_list_mean)
+		D_CI.append([CI1_mean, CI2_mean])
+
+		D_per_mean.append(batch_per_lsit_mean)
+		D_per_CI.append([CI1_per, CI2_per])
 		print("=======")
+
+	print(T_mean)
+	print(T_CI)
+
+	print(D_per_mean)
+	print(D_per_CI)
+		# x = [2, 4, 6]
+		# y = [1, 3, 5]
+		# plt.plot(x, y)
+		# plt.show()
