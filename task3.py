@@ -265,7 +265,7 @@ if __name__== "__main__":
 	#default value
 	mean_arr_time = 6
 	mean_orbit_time = 5
-	service_time = [1,2,3,4,5,6]#1~6
+	service_time = [2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5]#2~5.5
 	max_buffer_size = 5
 	MCL_stop = 500000
 
@@ -318,7 +318,7 @@ if __name__== "__main__":
 
 
 	#start drawing part 1
-	# x = [x for x in range(1, len(service_time) + 1)]
+	# x = [2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5]
 	# e_T_mean =[y - x for x, y in T_CI]
 	# e_T_per = [y - x for x, y in T_per_CI]
 
